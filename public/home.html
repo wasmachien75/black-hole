@@ -1,0 +1,29 @@
+<p id="x">
+</p>
+<script>
+var p = document.getElementById("x")
+var sentences = [
+	"I wonder if spiders get anxious too", 
+	"Have you ever heard of the Atlantic Ocean?",
+	"Don't bother they're here",
+	"It's a whole 'nother year",
+	"I will get it tattooed",
+	"Art saved my life",
+	"Humanoid must not escape",
+	"Everyone calls me Big John",
+	"Goddamn telephone",
+	"She used to buy me chewing gum",
+	"They are after my real estate"
+	];
+	
+var index = Math.ceil(Math.random() * sentences.length);
+console.log(index)
+
+for(var a = 6; a < 20; a++){
+	 var size = a.toString();
+	 p.innerHTML = p.innerHTML + "<span style='display: block; text-align: center; font-size: " + a + "px;'>" + sentences[index-1] + "</span>" ;
+	 }
+for(var b = 20; b > 6; b--){
+	 p.innerHTML = p.innerHTML + "<span style='display: block; text-align: center; font-size: " + b + "px;'>" + sentences[index-1] + "</span>" ;
+	 }
+</script>
