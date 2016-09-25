@@ -5,7 +5,7 @@ var request = require('request');
 var fs = require('fs');
 var util = require('util');
 var photo = require('./photo');
-
+var words = require('./data/home-words');
 
 var app = express();
 console.log("***SERVER STARTED***")
@@ -37,8 +37,25 @@ app.post('/send', function(req, res){
 	// res.send("Mail sent!");
 	// res.end();
 })
+
 app.get('/', function(req, res){
 	res.redirect('/home');
+})
+
+app.get('/home', function(req, res){
+	var s = words.collection;
+	var index = Math.round(Math.random() * s.length);
+	var c = "";
+	for(var a = 6; a < 20; a++){
+		 var size = a.toString();
+		 c = c + "<span style='display: block; text-align: center; font-size: " + a + "px;'>" + s[index] + "</span>" ;
+		 }
+	for(var b = 20; b > 6; b--){
+		 c = c + "<span style='display: block; text-align: center; font-size: " + b + "px;'>" + s[index] + "</span>" ;
+		 }
+
+	res.render('index.pug', {content: c});
+	res.end();
 })
 
 app.get('/:page', function(req, res){
