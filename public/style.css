@@ -46,6 +46,11 @@ div#main a{
 	color: #85E0FF;
 	}
 	
+div#foot{
+	display: block;
+	margin-top: 10%;
+}
+	
 textarea{
 	resize: none;
 }

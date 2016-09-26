@@ -5,7 +5,7 @@ var request = require('request');
 var fs = require('fs');
 var util = require('util');
 var photo = require('./photo');
-var words = require('./data/home-words');
+var words = require('./data/home-words.json');
 
 var app = express();
 console.log("***SERVER STARTED***")
@@ -43,8 +43,8 @@ app.get('/', function(req, res){
 })
 
 app.get('/home', function(req, res){
-	var s = words.collection;
-	var index = Math.round(Math.random() * s.length);
+	var s = words.sentences;
+	var index = Math.ceil(Math.random() * s.length);
 	var c = "";
 	for(var a = 6; a < 20; a++){
 		 var size = a.toString();
@@ -53,6 +53,7 @@ app.get('/home', function(req, res){
 	for(var b = 20; b > 6; b--){
 		 c = c + "<span style='display: block; text-align: center; font-size: " + b + "px;'>" + s[index] + "</span>" ;
 		 }
+	c = c + "<div id='foot'><a href='https://www.youtube.com/watch?v=CURPyCzoKfY' />Open the Light</a></div>"
 
 	res.render('index.pug', {content: c});
 	res.end();
@@ -65,12 +66,10 @@ app.get('/:page', function(req, res){
 	}
 	console.log("Page '"+page+ "' requested.");
 	if (page == 'photos'){
-		var fiveHundred = require('./500px.json');
-		console.log(fiveHundred);
+		var fiveHundred = require('./data/500px.json');
 		var key = fiveHundred.consumerkey;
 		var username = fiveHundred.username;
 		var url = 'https://api.500px.com/v1/photos?feature=user&username='+username+'&sort=created_at&rpp=9&image_size=2&consumer_key='+key
-		console.log(url)
 		request(url, function(error, response, body){
 		if (!error && response.statusCode == 200) {
 			content = photo.getPics(body);
