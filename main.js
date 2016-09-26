@@ -17,7 +17,7 @@ app.set('view engine', 'pug');
 app.set('views', 'views');
 
 app.post('/send', function(req, res){
-	var transporter = nodemailer.createTransport('smtps://willemvanlishout%40gmail.com:ohnpenjotyufpxsv@smtp.gmail.com');
+	var transporter = nodemailer.createTransport('smtps://willemvanlishout%40gmail.com:***@smtp.gmail.com');
 	
 	var mailOptions = {
 		from: '"Website Contact" <contact@contact.com',
