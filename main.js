@@ -1,4 +1,3 @@
-var express = require('express');
 var nodemailer = require('nodemailer');
 var bodyParser = require('body-parser');
 var request = require('request');
@@ -7,17 +6,12 @@ var util = require('util');
 var photo = require('./photo');
 var words = require('./data/home-words.json');
 var config = require('./data/config.json');
+var express = require('express');
+var server = require('./server');
 
-var app = express();
-console.log("***SERVER STARTED***")
-console.log("")
-app.use(express.static('public'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true }));
-app.set('view engine', 'pug');
-app.set('views', 'views');
-
-
+var app = server.app;
+app.listen(8080);
+ 
 app.post('/send', function(req, res){
 	var username = encodeURIComponent(config["gmail"].username);
 	var password = config["gmail"].password;
@@ -49,8 +43,18 @@ app.get('/', function(req, res){
 })
 
 app.get('/password', function(req, res){
+	console.log("hello");
+	try{
+		var maxlength = req.query.maxlength;
+		console.log(maxlength);
+	}
+	catch(err) {
+		var maxlength = 0;
+		console.log(err);
+	}
 	var password = require('./password');
-	res.render('index.pug', {content: password.getPassword()});
+	var html = "<div id='password'>" + password.getPassword(maxlength) + "</div>"
+	res.render('index.pug', {content: html});
 	res.end();
 })
 
@@ -103,4 +107,3 @@ app.get('/:page', function(req, res){
 	}
 });
 
-app.listen(80);

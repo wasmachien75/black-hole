@@ -3,7 +3,9 @@ body{
 	}
 	
 div#links{
-	margin-left: 2%;
+	position: absolute;
+	left: 2%;
+	width: 15%;
 	text-align: left;
 	text-transform: uppercase;
 	float: left;
@@ -49,6 +51,11 @@ div#main a{
 div#foot{
 	display: block;
 	margin-top: 10%;
+}
+
+div#password{
+	padding-top: 25%;
+	text-align: center;
 }
 	
 textarea{
