@@ -3,6 +3,7 @@
 		Build Year: 1990 (days in service: <span id="days"></span>)<br>
 		Manufactured in: Belgium<br>
 		Class: M<br>
+		Current location: <span id="location"></span> <span id="time"></span><br>
 		
 		</p>
 		<h2>Training</h2>
@@ -37,8 +38,24 @@
 					Teaching
 			</div>
 	</div>
+	<script src="methods.js"></script>
 	<script>
-	var cd = new Date();
-	var od = new Date(90,08,03);
-	document.getElementById("days").innerHTML = parseInt(((cd-od)/86400000))
+	var xml = new XMLHttpRequest();
+	xml.open("GET", "data/location.json");
+	xml.onload = function() {
+		var location_object = JSON.parse(xml.response);
+		var location = location_object.Location;
+		document.getElementById("location").innerHTML = location; //Get location from location.json
+		var time = parseInt(location_object.Time);
+		var current_time = Date.now() //Is a static method, therefore always Date.now()
+		var time_difference = current_time - time;
+		var time_string = timeToWords(time_difference);
+		document.getElementById("time").innerHTML = "(" + time_string + ")";
+		
+		};
+	xml.send();
+	
+	var days = timeSinceMyBirth();
+	document.getElementById("days").innerHTML = days;
+	
 	</script>

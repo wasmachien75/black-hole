@@ -4,10 +4,10 @@ var request = require('request');
 var fs = require('fs');
 var util = require('util');
 var photo = require('./photo');
-var words = require('./data/home-words.json');
 var config = require('./data/config.json');
 var express = require('express');
 var server = require('./server');
+var home = require('./home.js');
 
 var app = server.app;
 app.listen(8080);
@@ -42,6 +42,14 @@ app.get('/', function(req, res){
 	res.redirect('/home');
 })
 
+app.post('/location', function(req, res){
+	fs.writeFile('public/data/location.json', JSON.stringify(req.body), function(err){
+		if(err) throw err;
+		console.log(req.body),
+		console.log("Saved location to file.");
+	}) 
+})
+
 app.get('/password', function(req, res){
 	console.log("hello");
 	try{
@@ -59,19 +67,11 @@ app.get('/password', function(req, res){
 })
 
 app.get('/home', function(req, res){
-	var s = words.sentences;
-	var index = Math.ceil(Math.random() * s.length);
-	var c = "";
-	for(var a = 6; a < 20; a++){
-		 var size = a.toString();
-		 c = c + "<span style='display: block; text-align: center; font-size: " + a + "px;'>" + s[index] + "</span>" ;
-		 }
-	for(var b = 20; b > 6; b--){
-		 c = c + "<span style='display: block; text-align: center; font-size: " + b + "px;'>" + s[index] + "</span>" ;
-		 }
-	c = c + "<div id='foot'><a href='https://www.youtube.com/watch?v=CURPyCzoKfY' />Open the Light</a></div>"
+	var content_html = "";
+	var content_html = home.output();
+	content_html = content_html + "<div id='foot'><a href='https://www.youtube.com/watch?v=CURPyCzoKfY' />Open the Light</a></div>"
 
-	res.render('index.pug', {content: c});
+	res.render('index.pug', {content: content_html});
 	res.end();
 })
 
