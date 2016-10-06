@@ -8,6 +8,7 @@ console.log("")
 app.set('view engine', 'pug');
 app.set('views', 'views');
 app.use(express.static('public'));
+app.use(express.static('public/data'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true }));
 

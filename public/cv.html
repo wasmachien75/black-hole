@@ -45,7 +45,7 @@
 	xml.onload = function() {
 		var location_object = JSON.parse(xml.response);
 		var location = location_object.Location;
-		document.getElementById("location").innerHTML = location; //Get location from location.json
+		document.getElementById("location").innerHTML = "<a target='_blank' href='https://www.google.com/maps/place/" + location + "'>" + location + "</a>" ; //Get location from location.json
 		var time = parseInt(location_object.Time);
 		var current_time = Date.now() //Is a static method, therefore always Date.now()
 		var time_difference = current_time - time;
