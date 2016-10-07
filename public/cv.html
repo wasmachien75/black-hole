@@ -4,7 +4,7 @@
 		Manufactured in: Belgium<br>
 		Class: M<br>
 		Current location: <span id="location"></span> <span id="time"></span><br>
-		
+
 		</p>
 		<h2>Training</h2>
 		<p>
@@ -14,7 +14,8 @@
 		<h2>Missions</h2>
 				<a target="_blank" href="http://www.ihumd.ru/">Pro bono volunteer</a> (Moscow, Russia) (2013)<br>
 				<a target="_blank" href="http://www.integration21.ru/">Language teacher</a> (Moscow, Russia) (2013-2014)<br>
-				<a target="_blank" href="http://www.teksamco.com">Tower salesman</a> (Genk, Belgium) (2015-2016)
+				<a target="_blank" href="http://www.teksamco.com">Tower salesman</a> (Genk, Belgium) (2015-2016)<br>
+				<a target="_blank" href="http://www.mediagenix.tv">Data dealer</a> (Brussels, Belgium) (2016-?)
 		<h2>Skills</h2>
 			<div id="languages">
 				<h3 style="margin-top: 0;">Languages</h3>
@@ -29,7 +30,7 @@
 				<h3 style="margin-top: 0;">Computer</h3>
 					<a href="password">Programming</a> (Python, Javascript)<br>
 					Design (HTML, CSS, Photoshop, InDesign)<br>
-					Microsoft Office
+					Linux, windows
 				<h3>Other</h3>
 					Selling<br>
 					Translating<br>
@@ -38,24 +39,27 @@
 					Teaching
 			</div>
 	</div>
+
+
 	<script src="methods.js"></script>
+
 	<script>
-	var xml = new XMLHttpRequest();
+	var xml = new XMLHttpRequest(); //Get location from location.json
 	xml.open("GET", "data/location.json");
 	xml.onload = function() {
 		var location_object = JSON.parse(xml.response);
 		var location = location_object.Location;
-		document.getElementById("location").innerHTML = "<a target='_blank' href='https://www.google.com/maps/place/" + location + "'>" + location + "</a>" ; //Get location from location.json
+		document.getElementById("location").innerHTML = "<a target='_blank' href='https://www.google.com/maps/place/" + location + "'>" + location + "</a>" ;
 		var time = parseInt(location_object.Time);
 		var current_time = Date.now() //Is a static method, therefore always Date.now()
 		var time_difference = current_time - time;
 		var time_string = timeToWords(time_difference);
 		document.getElementById("time").innerHTML = "(" + time_string + ")";
-		
+
 		};
 	xml.send();
-	
+
 	var days = timeSinceMyBirth();
 	document.getElementById("days").innerHTML = days;
-	
+
 	</script>
