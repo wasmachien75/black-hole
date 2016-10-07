@@ -11,14 +11,14 @@ var home = require('./home.js');
 
 var app = server.app;
 app.listen(8080);
- 
+
 app.post('/send', function(req, res){
 	var username = encodeURIComponent(config["gmail"].username);
 	var password = config["gmail"].password;
 	var email = config["gmail"].email
-	
+
 	var transporter = nodemailer.createTransport('smtps://' + username + ":" + password + '@smtp.gmail.com');
-	
+
 	var mailOptions = {
 		from: '"Website Contact" <contact@contact.com',
 		to: email,
@@ -47,21 +47,19 @@ app.post('/location', function(req, res){
 		if(err) throw err;
 		console.log(req.body),
 		console.log("Saved location to file.");
-	}) 
+	})
 })
 
 app.get('/password', function(req, res){
-	console.log("hello");
 	try{
 		var maxlength = req.query.maxlength;
-		console.log(maxlength);
 	}
 	catch(err) {
 		var maxlength = 0;
 		console.log(err);
 	}
 	var password = require('./password');
-	var html = "<div id='password'>" + password.getPassword(maxlength) + "</div>"
+	var html = "<div id='password'>" + password.getPassword(maxlength) + "</div><p><a href='password_gen'>Retry</a>"
 	res.render('index.pug', {content: html});
 	res.end();
 })
@@ -106,4 +104,3 @@ app.get('/:page', function(req, res){
 		console.log("Served '" + page + ".html'.");
 	}
 });
-
