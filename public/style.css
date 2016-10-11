@@ -1,7 +1,7 @@
 body{
 	background-color: #121212;
 	}
-	
+
 div#links{
 	position: absolute;
 	left: 2%;
@@ -20,7 +20,7 @@ div#links>a{
 div#links>a:hover{
 	color: #85E0FF;
 	}
-	
+
 div#main{
 	text-transform: lowercase;
 	margin-top: 3%;
@@ -37,27 +37,30 @@ div#languages{
 	margin: 0;
 	float: left;
 	}
-	
+
 div#comp-other{
 	margin: 0;
 	float: right;
 	/* border: solid 1px white; */}
-	
+
 div#main a{
 	text-decoration: none;
 	color: #85E0FF;
 	}
-	
+
 div#foot{
 	display: block;
 	margin-top: 10%;
 }
 
 div#password{
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
 	padding-top: 25%;
-	text-align: center;
+	text-align: left;
 }
-	
+
 textarea{
 	resize: none;
 }
@@ -67,6 +70,14 @@ textarea,input[type="email"]{
 	margin-bottom: 5%;
 	font-family: "Courier";
 	width: 50%;
+}
+
+input[name="maxlength"]{
+	width: 30px;
+}
+
+p#password-p{
+	font-size: 120%;
 }
 
 div#main img{

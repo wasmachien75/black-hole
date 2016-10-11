@@ -8,6 +8,7 @@ var config = require('./data/config.json');
 var express = require('express');
 var server = require('./server');
 var home = require('./home.js');
+var password = require('./password.js')
 
 var app = server.app;
 app.listen(8080);
@@ -51,24 +52,24 @@ app.post('/location', function(req, res){
 })
 
 app.get('/password', function(req, res){
-	try{
-		var maxlength = req.query.maxlength;
-	}
-	catch(err) {
-		var maxlength = 0;
-		console.log(err);
-	}
-	var password = require('./password');
-	var html = "<div id='password'>" + password.getPassword(maxlength) + "</div><p><a href='password_gen'>Retry</a>"
+	var html = password.getPassword(req);
+	// try{
+	// 	var maxlength = req.query.maxlength;
+  //   var random_dgt = req.query.random_dgt;
+  //   console.log(random_dgt);
+	// }
+	// catch(err) {
+	// 	var maxlength = 0;
+	// 	console.log(err);
+	// }
+	// var password = require('./password');
+	// var html = "<div id='password'>" + password.getPassword(maxlength, random_dgt) + "</div><p><a href='password_gen'>Retry</a>"
 	res.render('index.pug', {content: html});
 	res.end();
 })
 
 app.get('/home', function(req, res){
-	var content_html = "";
 	var content_html = home.output();
-	content_html = content_html + "<div id='foot'><a href='https://www.youtube.com/watch?v=CURPyCzoKfY' />Open the Light</a></div>"
-
 	res.render('index.pug', {content: content_html});
 	res.end();
 })
