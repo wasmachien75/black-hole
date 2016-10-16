@@ -1,0 +1,48 @@
+@font-face {
+  font-family: Harlow;
+  src: url('harlow.TTF');
+}
+
+body{
+  background-color: rgb(185, 81, 81);
+  /*background: linear-gradient(rgb(40, 117, 128), rgb(41, 105, 152));*/
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+h2{
+  padding-top: 6%;
+  margin-top: 0%;
+  text-shadow: 1px 1px 2px rgb(100,100,100);
+  font-size: 3em;
+  font-family: Harlow;
+  text-align: center;
+}
+
+#header{
+  width: 35%;
+  padding-left: 1%;
+  padding-right: 1%;
+  margin-left: 20%;
+  margin-top: 0%;
+  background-color: rgba(40,40,40,0.3);
+  height: 100%;
+  overflow: auto;
+}
+
+.transparent{
+  opacity: 0.6;
+}
+
+div#main{
+  font-size: 1.6em;
+  text-align: justify;
+  line-height: 140%;
+  font-family: 'Garamond';
+}
+
+.bold{
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgb(70,70,70);
+  font-style: italic;
+}

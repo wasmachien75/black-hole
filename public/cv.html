@@ -1,3 +1,4 @@
+		<script src="methods.js"></script>
 		<h2>General</h2>
 		<p>
 		Build Year: 1990 (days in service: <span id="days"></span>)<br>
@@ -29,7 +30,7 @@
 			<div id="comp-other">
 				<h3 style="margin-top: 0;">Computer</h3>
 					<a href="password">Programming</a> (Python, Javascript)<br>
-					Design (HTML, CSS, Photoshop, InDesign)<br>
+					Design (HTML, <a href="#" onclick="switchCss()">CSS</a>, Photoshop, InDesign)<br>
 					Linux, windows
 				<h3>Other</h3>
 					Selling<br>
@@ -38,11 +39,7 @@
 					Creating<br>
 					Teaching
 			</div>
-	</div>
-
-
-	<script src="methods.js"></script>
-
+			
 	<script>
 	var xml = new XMLHttpRequest(); //Get location from location.json
 	xml.open("GET", "data/location.json");
