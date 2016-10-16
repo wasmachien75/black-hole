@@ -34,10 +34,21 @@ function timeToWords(milliseconds){ //put in time difference in milliseconds...g
 
 function timeSinceMyBirth(){ //get days since my birth (March 8th 1990) - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
 	var current_date = new Date();
-	console.log(current_date);
 	var birth_date = new Date(1990,02,08); //Month is zero-based for some reason!
-	console.log(birth_date);
-	var days_since_birth = Math.round(parseInt(current_date - birth_date)/86400000);
-	console.log(days_since_birth)
+	var days_since_birth = Math.round(parseInt(current_date - birth_date)/86400000)
 	return days_since_birth;
+}
+
+var alt_style = false;
+
+function switchCss(){
+	var link_el = document.querySelector("link[rel='stylesheet']");
+	if (alt_style === false) {
+		link_el.href = "alt_style.css";
+		alt_style = true;
+	}
+	else {
+		link_el.href = "style.css";
+		alt_style = false;
+	}
 }

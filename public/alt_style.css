@@ -1,0 +1,102 @@
+@font-face {
+  font-family: Harlow;
+  src: url('css/harlow.TTF');
+}
+
+h2 {
+	font-family: Harlow;
+	font-size: 2.4em;
+	text-shadow: 2px 2px 2px rgb(40,40,40);
+}
+
+body{
+	background-color: #893232;
+	}
+
+div#links{
+	position: absolute;
+	right: 4%;
+	bottom: 6%;
+	text-align: left;
+	text-transform: lowercase;
+	padding: 1em;
+	border: solid 8px #EBD2BE;
+	}
+div#links>a{
+	font-size: 2em;
+	font-family: Courier;
+	line-height: 1.5em;
+	text-decoration: none;
+	color: white;
+	}
+div#links>a:hover{
+	color: #DEB698;
+	}
+
+div#main{
+	text-transform: lowercase;
+	margin-top: 1%;
+	margin-left: 15%;
+	margin-right: auto;
+	width: 42%;
+	font-family: Arial;
+	color: white;
+	font-size: 0.9em;
+	line-height: 1.4em;
+	overflow: auto;
+	padding-left: 2em;
+	border-left: solid 4px rgba(255,255,255,0.4);
+	}
+
+div#languages{
+	/* border: solid 1px white; */
+	margin: 0;
+	float: left;
+	}
+
+div#comp-other{
+	margin: 0;
+	float: right;
+	/* border: solid 1px white; */}
+
+div#main a{
+	text-decoration: none;
+	color: #DEB698;
+	}
+
+div#foot{
+	display: block;
+	margin-top: 10%;
+}
+
+div#password{
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 25%;
+	text-align: left;
+}
+
+textarea{
+	resize: none;
+}
+
+textarea,input[type="email"]{
+	margin-top: 2%;
+	margin-bottom: 5%;
+	font-family: "Courier";
+	width: 50%;
+}
+
+input[name="maxlength"]{
+	width: 30px;
+}
+
+p#password-p{
+	font-size: 120%;
+}
+
+div#main img{
+	margin-right: 4%;
+	margin-bottom: 4%;
+}
