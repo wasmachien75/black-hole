@@ -5,7 +5,6 @@ body{
 div#links{
 	position: absolute;
 	left: 2%;
-	width: 15%;
 	text-align: left;
 	text-transform: uppercase;
 	float: left;
@@ -30,7 +29,13 @@ div#main{
 	font-family: Courier;
 	color: white;
 	font-size: 0.9em;
+	overflow: auto;
+	line-height: 1.3em;
 	}
+
+div#home{
+	line-height: 1.2em;
+}
 
 div#languages{
 	/* border: solid 1px white; */
